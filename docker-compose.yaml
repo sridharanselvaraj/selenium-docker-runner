@@ -17,18 +17,7 @@ services:
       - hub
     environment:
       - HUB_HOST=hub
-  search-module1:
-    image: sridharanqa/selenium-docker
-    depends_on:
-      - chrome
-      - firefox
-    environment:
-      - BROWSER=firefox
-      - HUB_HOST=hub
-      - MODULE=search-module.xml
-    volumes:
-      - ./search-result:/usr/share/docker/test-output
-  search-module2:
+  search-module:
     image: sridharanqa/selenium-docker
     depends_on:
       - chrome
@@ -39,25 +28,15 @@ services:
       - MODULE=search-module.xml
     volumes:
       - ./search-result:/usr/share/docker/test-output
-  # book-flight-module1:
-  #   image: sridharanqa/selenium-docker
-  #   depends_on:
-  #     - chrome
-  #     - firefox
-  #   environment:
-  #     - BROWSER=chrome
-  #     - HUB_HOST=hub
-  #     - MODULE=book-flight-module.xml
-  #   volumes:
-  #     - ./book-result:/usr/share/docker/test-output
-  # book-flight-module2:
-  #   image: sridharanqa/selenium-docker
-  #   depends_on:
-  #     - chrome
-  #     - firefox
-  #   environment:
-  #     - BROWSER=firefox
-  #     - HUB_HOST=hub
-  #     - MODULE=book-flight-module.xml
-  #   volumes:
-  #     - ./book-result:/usr/share/docker/test-output
+  book-flight-module:
+    image: sridharanqa/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=book-flight-module.xml
+    volumes:
+      - ./book-result:/usr/share/docker/test-output
+
