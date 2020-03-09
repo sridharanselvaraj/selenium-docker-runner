@@ -1,11 +1,9 @@
 pipeline{
   agent any
   stages{
-      stage("Pull Latest Image"){
+    stage("Pull Latest Image"){
         steps{
-          withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) 
-			    sh "docker login --username=${user} --password=${pass}"
-			    sh "docker pull srselvaraj/selenium-docker"
+          sh "docker pull srselvaraj/selenium-docker"
         }
       }
       stage("Start Grid"){
