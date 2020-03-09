@@ -2,8 +2,6 @@ version: '3.7'
 services:
   hub:
     image: selenium/hub:3.14
-    ports:
-      - '4444:4444'
   chrome:
     image: selenium/node-chrome:3.14
     depends_on:
@@ -27,7 +25,7 @@ services:
       - HUB_HOST=hub
       - MODULE=search-module.xml
     volumes:
-      - ./search-result:/usr/share/docker/test-output
+      - ./output/search-result:/usr/share/docker/test-output
   book-flight-module:
     image: sridharanqa/selenium-docker
     depends_on:
@@ -38,5 +36,5 @@ services:
       - HUB_HOST=hub
       - MODULE=book-flight-module.xml
     volumes:
-      - ./book-result:/usr/share/docker/test-output
+      - ./output/book-result:/usr/share/docker/test-output
 
