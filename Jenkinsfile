@@ -1,5 +1,8 @@
 pipeline{
-  agent any
+  environment {
+    registry = "srselvaraj/selenium-docker"
+    registryCredential = 'dockerhub'
+  }agent any
   stages{
       stage("Pull Latest Image"){
         steps{
