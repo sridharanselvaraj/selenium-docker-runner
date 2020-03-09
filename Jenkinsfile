@@ -1,12 +1,10 @@
 pipeline{
-  environment {
-    registry = "srselvaraj/selenium-docker"
-    registryCredential = 'dockerhub'
-  }agent any
+  agent any
   stages{
-      stage("Pull Latest Image"){
-        steps{
-          sh "docker pull srselvaraj/selenium-docker"
+      steps{
+          withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+			    sh "docker login --username=${user} --password=${pass}"
+			    sh "docker pull srselvaraj/selenium-docker"
         }
       }
       stage("Start Grid"){
